@@ -172,6 +172,7 @@ namespace Game
             bodyRoot.SetActive(false);
             deathFx.gameObject.SetActive(true);
             deathFx.Play();
+            AudioManager.instance.PlayEffect("dead");
         }
 
         private float finishLineOriginSpeed;

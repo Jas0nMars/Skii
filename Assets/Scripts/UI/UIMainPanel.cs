@@ -301,12 +301,13 @@ namespace UI
         {
             if (state)
             {
+                AudioManager.instance.Mute(false);
                 AudioManager.instance.PlayMusic();
                 PlayerPrefs.SetInt("NeedPlayMusic", 1);
             }
             else
             {
-                AudioManager.instance.StopMusic();
+                AudioManager.instance.Mute(true);
                 PlayerPrefs.SetInt("NeedPlayMusic", 0);
             }
         }

@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource effectSource;
 
     private AudioClip bgmClip;
+    private bool isMute = false;
 
     void Awake()
     {
@@ -42,6 +43,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayEffect(string name, float volume = 1.0f)
     {
+        if(isMute) return;
         AudioClip clip = Resources.Load<AudioClip>("audio/" + name);
         effectSource.PlayOneShot(clip, volume);
     }
@@ -54,5 +56,15 @@ public class AudioManager : MonoBehaviour
     public void StopEffects()
     {
         effectSource.Stop();
+    }
+
+    public void Mute(bool state)
+    {
+        isMute = state;
+        if(state)
+        {
+            StopMusic();
+            StopEffects();
+        }
     }
 }
